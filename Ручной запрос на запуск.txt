@@ -1,0 +1,9 @@
+PowerShell - Ctrl-X + PowerShell (от имени администратора)
+
+$body = @{
+    url = "https://www.avito.ru/krasnodar/gotoviy_biznes/torgovlya/gotovyj_biznes_produktovye_magaziny-ASgBAgICAkToDKy2AZ6kFYyFkgM?cd=1&context=H4sIAAAAAAAA_wEmANn_YToxOntzOjE6InkiO3M6MTY6IkM4a2NyWDVGQ0JIaDdSTDUiO31iEeeMJgAAAA&f=ASgBAgECBEToDKy2AfDfD4L59QKepBWMhZIDrqsVlq2SAwJFxpoMHXsiZnJvbSI6MzUwMDAwMCwidG8iOjgwMDAwMDB9oqsVGXsiZnJvbSI6ODAwMDAwLCJ0byI6bnVsbH0&localPriority=1"
+    ads_limit = 20
+    email = "polexset@yandex.ru"
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "http://localhost:8000/create_order" -Method Post -Body $body -ContentType "application/json"
